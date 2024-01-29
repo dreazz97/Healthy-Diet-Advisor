@@ -48,13 +48,17 @@ func userdietplan(w http.ResponseWriter, r *http.Request) {
 	}
 
 	tdee, err1 := calculateTDEE(gender, weight, height, age, activity)
-	fmt.Println(plan)
-
 	if err1 != nil {
 		log.Println("Error calculating the TDEE", err1)
 		fmt.Fprintf(w, "Error calculating the TDEE: %v", err1)
 		return
 	}
+
+	breakfastCalories, lunchCalories, dinnerCalories := distributeCaloriesPerMeal(plan, tdee)
+
+	getMealTypeRecipe("breakfast", breakfastCalories)
+
+	log.Println(breakfastCalories, lunchCalories, dinnerCalories)
 
 	fmt.Fprintf(w, "TDEE: %v Kcal", tdee)
 }
