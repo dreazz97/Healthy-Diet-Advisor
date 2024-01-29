@@ -1,2 +1,2 @@
 # Healthy-Diet-Advisor
-A simple APP that calculates the user's TDEE and gives healthy recipes depending on the user's desired plan.
+A simple APP that calculates the user's TDEE and returns healthy recipes according to the user's desired plan.
