@@ -13,7 +13,7 @@ func main() {
 
 	myRouter := mux.NewRouter().StrictSlash(true)
 
-	myRouter.HandleFunc("/hda/userdietplan", userdietplan).Methods("POST")
+	myRouter.HandleFunc("/hda/userdietplan", userdietplan).Methods("GET")
 	log.Fatal(http.ListenAndServe("localhost:3001", myRouter))
 
 }
@@ -56,7 +56,7 @@ func userdietplan(w http.ResponseWriter, r *http.Request) {
 
 	breakfastCalories, lunchCalories, dinnerCalories := distributeCaloriesPerMeal(plan, tdee)
 
-	getMealTypeRecipe("breakfast", breakfastCalories)
+	// getMealTypeRecipe("breakfast", breakfastCalories)
 
 	log.Println(breakfastCalories, lunchCalories, dinnerCalories)
 

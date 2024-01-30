@@ -50,4 +50,4 @@ func distributeCaloriesPerMeal(plan string, tdee float64) (breakfastCalories flo
 	return breakfastCalories, lunchCalories, dinnerCalories
 }
 
-func getMealTypeRecipe(mealType string, mealCalories float64)
+// func getMealTypeRecipe(mealType string, mealCalories float64)
