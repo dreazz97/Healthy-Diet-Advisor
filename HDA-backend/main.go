@@ -36,8 +36,8 @@ func main() {
 }
 
 type RecipesResponse struct {
-	Recipes []Recipe `json:"recipes"`
-	Tdee    string   `json:"tdee"`
+	Recipes           []Recipe `json:"recipes"`
+	MaxCaloriesPerDay string   `json:"max_calories_per_day"`
 }
 
 func userdietplan(w http.ResponseWriter, r *http.Request) {
@@ -107,8 +107,8 @@ func userdietplan(w http.ResponseWriter, r *http.Request) {
 	tdeeAfterPlanFinal := strconv.Itoa(tdeeAfterPlanRound)
 
 	response := RecipesResponse{
-		Recipes: Recipes,
-		Tdee:    "TDEE: " + tdeeAfterPlanFinal + " Kcal",
+		Recipes:           Recipes,
+		MaxCaloriesPerDay: "Max Calories per day: " + tdeeAfterPlanFinal + " Kcal",
 	}
 
 	jsonResponse, err := json.Marshal(response)
