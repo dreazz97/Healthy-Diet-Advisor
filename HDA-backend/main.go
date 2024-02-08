@@ -80,6 +80,10 @@ func userdietplan(w http.ResponseWriter, r *http.Request) {
 
 	breakfastCalories, lunchCalories, dinnerCalories, tdeeAfterPlan := distributeCaloriesPerMeal(plan, tdee)
 
+	fmt.Println(breakfastCalories)
+	fmt.Println(lunchCalories)
+	fmt.Println(dinnerCalories)
+
 	tdeeAfterPlanRound := int(math.Round(tdeeAfterPlan))
 
 	breakfastRecipe, err := getMealTypeRecipe("breakfast", breakfastCalories)
