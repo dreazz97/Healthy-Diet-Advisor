@@ -1,0 +1,52 @@
+#diet-card {
+    background-color: rgb(230, 245, 202);
+    position: relative;
+    font-family: "Montserrat";
+    height: 430px;
+    width: 310px;
+    border-radius: 10px;
+  }
+  
+  
+  #card-title {
+    font-weight: 500;
+    font-size: 1.5em;
+  }
+  
+  #diet-card-title-div {
+    padding-top: 1px;
+    text-align: center;
+  }
+  
+  #diet-card-img-div {
+    position: relative;
+    justify-content: center;
+    width: 310px;
+    height: 200px;
+  }
+  
+  #diet-card-body {
+    margin-left: 20px;
+  }
+  
+  .body-paragraph {
+    font-weight: 600;
+  }
+  
+  .value-paragraph {
+    font-weight: 400;
+  }
+  
+  #link-paragraph {
+    font-weight: 400;
+  }
+  
+  #link-paragraph:hover {
+    cursor: pointer;
+    color: grey;
+  }
+
+  #card-link {
+    text-decoration: none;
+    color: black;
+  }
