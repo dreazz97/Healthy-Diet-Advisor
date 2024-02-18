@@ -65,12 +65,12 @@ type GetMealRecipeResponse struct {
 }
 
 type Recipe struct {
-	MealTitle             string  `json:"meal_title"`
-	Image                 string  `json:"image"`
-	RecipeLink            string  `json:"recipe_link"`
-	TotalCalories         float64 `json:"total_calories"`
-	CaloriesPerOneServing int     `json:"calories_per_one_serving"`
-	MealType              string  `json:"mealType"`
+	MealTitle             string `json:"meal_title"`
+	Image                 string `json:"image"`
+	RecipeLink            string `json:"recipe_link"`
+	TotalCalories         int    `json:"total_calories"`
+	CaloriesPerOneServing int    `json:"calories_per_one_serving"`
+	MealType              string `json:"mealType"`
 }
 
 func getMealTypeRecipe(mealType string, mealCalories int) (*Recipe, error) {
@@ -89,12 +89,13 @@ func getMealTypeRecipe(mealType string, mealCalories int) (*Recipe, error) {
 	if err := json.NewDecoder(resp.Body).Decode(&mealRecipeResponse); err != nil {
 		return nil, err
 	}
+	TotalCaloriesInt := int(math.Round(mealRecipeResponse.Hits[0].Recipe.Calories))
 
 	recipe := &Recipe{
 		MealTitle:             mealRecipeResponse.Hits[0].Recipe.Label,
 		Image:                 mealRecipeResponse.Hits[0].Recipe.Image,
 		RecipeLink:            mealRecipeResponse.Hits[0].Recipe.Url,
-		TotalCalories:         mealRecipeResponse.Hits[0].Recipe.Calories,
+		TotalCalories:         TotalCaloriesInt,
 		CaloriesPerOneServing: mealCalories,
 		MealType:              mealRecipeResponse.Hits[0].Recipe.MealType[0],
 	}

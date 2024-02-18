@@ -112,7 +112,7 @@ func userdietplan(w http.ResponseWriter, r *http.Request) {
 
 	response := RecipesResponse{
 		Recipes:           Recipes,
-		MaxCaloriesPerDay: "Max Calories per day: " + tdeeAfterPlanFinal + " Kcal",
+		MaxCaloriesPerDay: tdeeAfterPlanFinal,
 	}
 
 	jsonResponse, err := json.Marshal(response)
@@ -122,5 +122,6 @@ func userdietplan(w http.ResponseWriter, r *http.Request) {
 	}
 
 	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Access-Control-Allow-Origin", "*")
 	w.Write(jsonResponse)
 }
