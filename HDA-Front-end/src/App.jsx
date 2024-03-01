@@ -8,10 +8,10 @@ function App() {
   const [recipes, setRecipes] = useState([]);
   const [visibleCards, setVisibleCards] = useState(false);
 
-  const getRecipes = async (gender, weight, height, age, plan, activity) => { // Add this function
+  const getRecipes = async (gender, weight, height, age, plan, activity) => {
     const recipesResponse = await fetch(`http://localhost:3001/hda/userdietplan?gender=${gender}&weight=${weight}&height=${height}&age=${age}&plan=${plan}&activity=${activity}`);
     const recipesData = await recipesResponse.json();
-    setRecipes(recipesData); // Update the state with the new recipes
+    setRecipes(recipesData);
     setVisibleCards(true);
   }
 
