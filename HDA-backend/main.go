@@ -16,6 +16,7 @@ import (
 var (
 	api_id  string
 	api_key string
+	port    string
 )
 
 func main() {
@@ -27,7 +28,7 @@ func main() {
 
 	api_id = os.Getenv("APP_ID")
 	api_key = os.Getenv("APP_KEY")
-	port := os.Getenv("SERVER_PORT")
+	port = os.Getenv("SERVER_PORT")
 	if port == "" {
 		port = "3001"
 	}
