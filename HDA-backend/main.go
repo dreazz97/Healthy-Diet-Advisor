@@ -10,7 +10,7 @@ import (
 	"strconv"
 
 	"github.com/gorilla/mux"
-	"github.com/joho/godotenv"
+	// "github.com/joho/godotenv"
 )
 
 var (
@@ -20,10 +20,10 @@ var (
 
 func main() {
 
-	err := godotenv.Load()
-	if err != nil {
-		log.Fatal("Error loading .env file")
-	}
+	// err := godotenv.Load()
+	// if err != nil {
+	// 	log.Fatal("Error loading .env file")
+	// }
 
 	api_id = os.Getenv("APP_ID")
 	api_key = os.Getenv("APP_KEY")
