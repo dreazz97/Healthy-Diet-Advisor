@@ -56,7 +56,7 @@ function App() {
         <Grid container justifyContent='center'>
           <Grid item xxl={12}>
             <Stack sx={{ width: '100%' }} spacing={2}>
-              <Alert severity="error">The meal calory distribuition sum must be equal to 100, please distribute across the three meals.</Alert>
+              <Alert severity="error">The meal calorie distribuition sum must be equal to 100, please distribute across the three meals.</Alert>
             </Stack>
           </Grid>
         </Grid>

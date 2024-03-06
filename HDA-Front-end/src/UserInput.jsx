@@ -163,7 +163,7 @@ const UserInput = ({ getRecipes }) => {
                 </Grid>
                 <Grid container justifyContent='center'>
                     <Grid item xxl={12}>
-                        <h2>Meal Calory Distribuition</h2>
+                        <h2>Meal Calorie Distribuition</h2>
                     </Grid>
                 </Grid>
                 <Grid container textAlign='center' justifyContent='center' alignItems='center' spacing={{ lg: 3, md: 2, xs: 3 }}>
