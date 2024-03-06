@@ -27,11 +27,15 @@ func main() {
 
 	api_id = os.Getenv("APP_ID")
 	api_key = os.Getenv("APP_KEY")
+	port := os.Getenv("SERVER_PORT")
+	if port == "" {
+		port = "3001"
+	}
 
 	myRouter := mux.NewRouter().StrictSlash(true)
 
 	myRouter.HandleFunc("/hda/userdietplan", userdietplan).Methods("GET")
-	log.Fatal(http.ListenAndServe("localhost:3001", myRouter))
+	log.Fatal(http.ListenAndServe(":"+port, myRouter))
 
 }
 
