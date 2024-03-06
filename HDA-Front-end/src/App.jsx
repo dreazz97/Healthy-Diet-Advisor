@@ -11,6 +11,7 @@ function App() {
   const [visibleCards, setVisibleCards] = useState(false);
   const [errorEmptyFields, setErrorEmptyFields] = useState(false);
   const [errorSumCalories, setErrorSumCalories] = useState(false);
+  const url = "https://healthy-diet-advisor-backend.onrender.com"
 
   const getRecipes = async (gender, weight, height, age, plan, activity, breakfastPercent, lunchPercent, dinnerPercent) => {
     if (gender === "" || weight === "" || height === "" || age === "" || plan === "" || activity === "" || breakfastPercent === "" || lunchPercent === "" || dinnerPercent === "") {
@@ -28,7 +29,7 @@ function App() {
       }, 3500);
       return
     }
-    const recipesResponse = await fetch(`http://localhost:3001/hda/userdietplan?gender=${gender}&weight=${weight}&height=${height}&age=${age}&plan=${plan}&activity=${activity}&breakfastperc=${breakfastPercent}&lunchperc=${lunchPercent}&dinnerperc=${dinnerPercent}`);
+    const recipesResponse = await fetch(`${url}/hda/userdietplan?gender=${gender}&weight=${weight}&height=${height}&age=${age}&plan=${plan}&activity=${activity}&breakfastperc=${breakfastPercent}&lunchperc=${lunchPercent}&dinnerperc=${dinnerPercent}`);
     const recipesData = await recipesResponse.json();
     setRecipes(recipesData);
     setVisibleCards(true);
