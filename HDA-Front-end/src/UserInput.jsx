@@ -20,6 +20,9 @@ const UserInput = ({ getRecipes }) => {
     const [age, setAge] = useState('');
     const [activity, setActivity] = useState('');
     const [plan, setPlan] = useState('');
+    const [breakfastPercent, setBreakfastPercent] = useState(20);
+    const [lunchPercent, setLunchPercent] = useState(50);
+    const [dinnerPercent, setDinnerPercent] = useState(30);
 
     const handleChangeGender = (event) => {
         setGender(event.target.value);
@@ -45,20 +48,21 @@ const UserInput = ({ getRecipes }) => {
         setActivity(event.target.value);
     };
 
+    const handleChangeBreakfastPercent = (event) => {
+        setBreakfastPercent(event.target.value);
+    };
 
-    // const getRecipes = () => {
-    //     async function getRecipesAPI() {
-    //         const recipesResponse = await fetch(`http://localhost:3001/hda/userdietplan?gender=${gender}&weight=${weight}&height=${height}&age=${age}&plan=${plan}&activity=${activity}`);
-    //         const recipesData = await recipesResponse.json();
-    //         console.log(recipesData.recipes[0].meal_title);
-    //         console.log(recipesData.recipes[1].meal_title);
-    //     }
-    //     getRecipesAPI()
-    // }
+    const handleChangeLunchPercent = (event) => {
+        setLunchPercent(event.target.value);
+    };
+
+    const handleChangeDinnerPercent = (event) => {
+        setDinnerPercent(event.target.value);
+    };
 
     const fetchRecipes = () => {
-        getRecipes(gender, weight, height, age, plan, activity); // Call the function passed as a prop
-      }
+        getRecipes(gender, weight, height, age, plan, activity, breakfastPercent, lunchPercent, dinnerPercent);
+    }
 
     return (
         <div id='UserInputDiv'>
@@ -156,6 +160,52 @@ const UserInput = ({ getRecipes }) => {
                             <MenuItem value="extraweightgain">Gain Extra Weight</MenuItem>
                         </Select>
                     </FormControl>
+                </Grid>
+                <Grid container justifyContent='center'>
+                    <Grid item xxl={12}>
+                        <h2>Meal Calory Distribuition</h2>
+                    </Grid>
+                </Grid>
+                <Grid container textAlign='center' justifyContent='center' alignItems='center' spacing={{ lg: 3, md: 2, xs: 3 }}>
+                    <Grid item xs={12} sm={6} md={6} lg={2} xl={2}>
+                        <TextField
+                            label="Breakfast Percentage"
+                            placeholder="1-100%"
+                            type="number"
+                            color='success'
+                            InputLabelProps={{
+                                shrink: true,
+                            }}
+                            value={breakfastPercent}
+                            onChange={handleChangeBreakfastPercent}
+                        />
+                    </Grid>
+                    <Grid item xs={12} sm={6} md={6} lg={2} xl={2}>
+                        <TextField
+                            label="Lunch Percentage"
+                            placeholder="1-100%"
+                            type="number"
+                            color='success'
+                            InputLabelProps={{
+                                shrink: true,
+                            }}
+                            value={lunchPercent}
+                            onChange={handleChangeLunchPercent}
+                        />
+                    </Grid>
+                    <Grid item xs={12} sm={6} md={6} lg={2} xl={2}>
+                        <TextField
+                            label="Dinner Percentage"
+                            placeholder="1-100%"
+                            type="number"
+                            color='success'
+                            InputLabelProps={{
+                                shrink: true,
+                            }}
+                            value={dinnerPercent}
+                            onChange={handleChangeDinnerPercent}
+                        />
+                    </Grid>
                 </Grid>
                 <Grid item xs={12}>
                     <Button color="success" variant="outlined" onClick={fetchRecipes}>Get Recipes</Button>

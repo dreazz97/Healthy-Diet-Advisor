@@ -47,7 +47,29 @@ func userdietplan(w http.ResponseWriter, r *http.Request) {
 	ageStr := r.URL.Query().Get("age")
 	plan := r.URL.Query().Get("plan")
 	activity := r.URL.Query().Get("activity")
+	breakfastPercStr := r.URL.Query().Get("breakfastperc")
+	lunchPercStr := r.URL.Query().Get("lunchperc")
+	dinnerPercStr := r.URL.Query().Get("dinnerperc")
 	weight, err := strconv.Atoi(weightStr)
+	if err != nil {
+		log.Println(err)
+		return
+	}
+	breakfastPerc, err := strconv.Atoi(breakfastPercStr)
+	if err != nil {
+		log.Println(err)
+		return
+	}
+	lunchPerc, err := strconv.Atoi(lunchPercStr)
+	if err != nil {
+		log.Println(err)
+		return
+	}
+	dinnerPerc, err := strconv.Atoi(dinnerPercStr)
+	if err != nil {
+		log.Println(err)
+		return
+	}
 
 	var Recipes []Recipe
 
@@ -78,7 +100,7 @@ func userdietplan(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	breakfastCalories, lunchCalories, dinnerCalories, tdeeAfterPlan := distributeCaloriesPerMeal(plan, tdee)
+	breakfastCalories, lunchCalories, dinnerCalories, tdeeAfterPlan := distributeCaloriesPerMeal(plan, tdee, breakfastPerc, lunchPerc, dinnerPerc)
 
 	fmt.Println(breakfastCalories)
 	fmt.Println(lunchCalories)

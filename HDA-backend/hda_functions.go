@@ -30,7 +30,7 @@ func calculateTDEE(gender string, weight int, height int, age int, activity stri
 	return roundedTdee, nil
 }
 
-func distributeCaloriesPerMeal(plan string, tdee float64) (breakfastCalories int, lunchCalories int, dinnerCalories int, tdeeAfterPlan float64) {
+func distributeCaloriesPerMeal(plan string, tdee float64, breakfastperc int, lunchperc int, dinnerperc int) (breakfastCalories int, lunchCalories int, dinnerCalories int, tdeeAfterPlan float64) {
 
 	switch plan {
 	case "weightloss":
@@ -40,10 +40,13 @@ func distributeCaloriesPerMeal(plan string, tdee float64) (breakfastCalories int
 	case "extraweightgain":
 		tdeeAfterPlan = tdee + 950
 	}
+	breakfastPercFinal := float64(breakfastperc) * 0.01
+	lunchPercFinal := float64(lunchperc) * 0.01
+	dinnerPercFinal := float64(dinnerperc) * 0.01
 
-	Initialbreakfast := tdeeAfterPlan * 0.2
-	Initiallunch := tdeeAfterPlan * 0.5
-	Initialdinner := tdeeAfterPlan * 0.3
+	Initialbreakfast := tdeeAfterPlan * breakfastPercFinal
+	Initiallunch := tdeeAfterPlan * lunchPercFinal
+	Initialdinner := tdeeAfterPlan * dinnerPercFinal
 
 	breakfastCalories = int(math.Round(Initialbreakfast))
 	lunchCalories = int(math.Round(Initiallunch))
